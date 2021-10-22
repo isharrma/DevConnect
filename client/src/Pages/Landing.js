@@ -1,10 +1,7 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import showcase from "../images/showcase.jpg";
-import Header from "../Components/Layout/Header";
 
 const Landing = () => {
   return (
@@ -17,12 +14,12 @@ const Landing = () => {
             other developers
           </p>
           <div class="buttons">
-            <a href="register.html" class="btn btn-primary">
+            <Link to="/signup" class="btn btn-primary">
               Sign Up
-            </a>
-            <a href="login.html" class="btn btn-light">
+            </Link>
+            <Link to="/signin" class="btn btn-light">
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </div>
