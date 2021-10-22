@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-
 import {
   Collapse,
   Navbar,
@@ -7,13 +6,11 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
   NavbarToggler,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Link } from "react-router-dom";
-import { UserContext } from "../../Context/UserContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,25 +18,45 @@ const Header = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar color="dark" dark expand="md">
-      <NavbarBrand>Dev's Connect</NavbarBrand>
+      <NavbarBrand>
+        <Link to="/" className="text-white" style={{ textDecoration: "none" }}>
+          Dev's Connect
+        </Link>
+      </NavbarBrand>
+
       {/* This is for the collapse form when the screen is shrinked. */}
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ms-auto" navbar>
           <NavItem>
-            <NavLink to="/profile" className="text-white">
+            <Link
+              to="/profiles"
+              className="text-white"
+              style={{ textDecoration: "none", padding: "10px" }}
+            >
               Profiles
-            </NavLink>
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLink to="/signup" className="text-white">
-              SignUp
-            </NavLink>
+            <Link
+              to="/signup"
+              className="text-white"
+              style={{
+                textDecoration: "none",
+                padding: "10px",
+              }}
+            >
+              Sign Up
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLink to="/signin" className="text-white">
-              SignIn
-            </NavLink>
+            <Link
+              to="/signin"
+              className="text-white"
+              style={{ textDecoration: "none", padding: "10px" }}
+            >
+              Sign In
+            </Link>
           </NavItem>
         </Nav>
       </Collapse>
