@@ -13,11 +13,14 @@ import {
   Label,
   Input,
 } from "reactstrap";
-
 import { Redirect } from "react-router-dom";
-import { toast } from "react-toastify";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const SignIn = () => {
+import { login } from "../../actions/auth";
+
+//* ----------------MAIN FUNCTION ------------------------
+const SignIn = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,8 +34,11 @@ const SignIn = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("Success");
+    login(email, password);
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
 
   return (
     <Container className="text-center">
@@ -86,4 +92,13 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+login.PropTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(SignIn);
