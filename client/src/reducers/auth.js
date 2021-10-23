@@ -3,6 +3,9 @@ import {
   SIGNUP_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  LOGOUT,
 } from "../actions/types";
 
 const initialState = {
@@ -24,15 +27,18 @@ export default function auth(state = initialState, action) {
         user: payload,
       };
     case SIGNUP_SUCCESS:
-      localStorage.setItem("token", payload.token);
+    case LOGIN_SUCCESS:
+      localStorage.setItem("token", payload);
       return {
         ...state,
-        ...payload.token,
+        token: payload,
         isAuthenticated: true,
         loading: false,
       };
     case SIGNUP_FAIL:
     case AUTH_ERROR:
+    case LOGIN_FAIL:
+    case LOGOUT:
       localStorage.removeItem("token");
       return {
         ...state,
@@ -41,7 +47,6 @@ export default function auth(state = initialState, action) {
         loading: false,
         user: null,
       };
-
     default:
       return state;
   }

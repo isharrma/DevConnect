@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 import {
   Container,
   Col,
@@ -14,16 +15,15 @@ import {
   Label,
   Input,
 } from "reactstrap";
-
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
-import axios from "axios";
 
-const SignUp = ({ setAlert, register }) => {
+//* ----------------------MAIN FUNCTION ------------------------------
+const SignUp = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -56,6 +56,9 @@ const SignUp = ({ setAlert, register }) => {
       register({ username, email, password });
     }
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
 
   return (
     <Container className="text-center">
@@ -143,8 +146,13 @@ const SignUp = ({ setAlert, register }) => {
 SignUp.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, register })(SignUp);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(SignUp);
 //connect takes two parametes : 1 - state that you wanna map
 // 2- the action you want to perform
