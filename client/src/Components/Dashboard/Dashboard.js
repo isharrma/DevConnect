@@ -1,10 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getCurrentProfile } from "../../actions/profile";
 import Loader from "react-loader-spinner";
 import { Container, Row, Col, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import DashboardActions from "./DashboardActions";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -37,8 +39,15 @@ const Dashboard = ({
           <h1>Dashboard</h1>
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <h4> Welcome {user.username}</h4>
+        </Col>
+      </Row>
       {profile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Container>
           <Row>
@@ -48,7 +57,9 @@ const Dashboard = ({
           </Row>
           <Row>
             <Col>
-              <Button className="priamry"> Create</Button>
+              <Link to="/create-profile">
+                <Button className="priamry"> Create</Button>
+              </Link>
             </Col>
           </Row>
         </Container>
