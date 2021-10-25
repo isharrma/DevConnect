@@ -33,7 +33,7 @@ const ProfileSchema = new mongoose.Schema({
       title: {
         type: String,
       },
-      comapny: {
+      company: {
         type: String,
       },
       location: {

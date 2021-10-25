@@ -41,7 +41,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
                     className="text-white"
                     style={{ textDecoration: "none", padding: "10px" }}
                   >
-                    Profiles
+                    Developers
                   </Link>
                 </NavItem>
                 <NavItem>
@@ -68,6 +68,13 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
               </>
             ) : (
               <NavItem>
+                <Link
+                  to="/profiles"
+                  className="text-white"
+                  style={{ textDecoration: "none", padding: "10px" }}
+                >
+                  Developers
+                </Link>
                 <Link
                   to="/dashboard"
                   className="text-white"

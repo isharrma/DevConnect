@@ -7,6 +7,7 @@ const request = require("request");
 const auth = require("../../middleware/auth");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Post = require("../../models/Post");
 
 // @route : GET api/profile/me
 // @desc : Get current user  profile
@@ -146,6 +147,9 @@ router.get("/user/:user_id", async (req, res) => {
 // @access : Private
 router.delete("/", auth, async (req, res) => {
   try {
+    //Deleting all the posts by user
+    await Post.deleteMany({ user: req.user.id });
+
     //Delete Profile
     await Profile.findOneAndRemove({ user: req.user.id });
 
@@ -173,10 +177,10 @@ router.put(
     ],
   ],
   async (req, res) => {
-    errors = validationResult(req);
+    const errors = validationResult(req);
 
     if (!errors.isEmpty())
-      return res.status(400).json({ erros: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
 
     const { title, company, location, from, to, current, desc } = req.body;
 
@@ -243,7 +247,7 @@ router.put(
     const errors = validationResult(req);
 
     if (!errors.isEmpty())
-      return res.status(400).json({ error: error.array() });
+      return res.status(400).json({ errors: errors.array() });
 
     const { school, degree, fieldofstudy, from, to, current, desc } = req.body;
 
@@ -272,18 +276,20 @@ router.put(
   }
 );
 
-// @route : DELETE api/profile/eeducation/:edu_id
+// @route : DELETE api/profile/education/:edu_id
 // @desc : Delete a user's experience
 // @access : Private
 router.delete("/education/:edu_id", auth, async (req, res) => {
   try {
-    const profile = await Profile({ user: req.user.id });
+    const profile = await Profile.findOne({ user: req.user.id });
 
     const idx = profile.education
       .map((item) => item.id)
       .indexOf(req.params.edu_id);
 
     profile.education.splice(idx, 1);
+
+    await profile.save();
 
     res.json(profile);
   } catch (err) {
