@@ -76,7 +76,7 @@ const EditProfile = ({
       instagram: loading || !profile.instagram ? "" : profile.instagram,
       youtube: loading || !profile.youtube ? "" : profile.youtube,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   return (
     <div
@@ -129,7 +129,7 @@ const EditProfile = ({
         <FormGroup style={{ marginTop: "2%" }}>
           <Label for="website">Website</Label>
           <Input
-            type="url"
+            type="text"
             name="website"
             id="website"
             placeholder="website"

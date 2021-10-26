@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { BsCodeSlash } from "react-icons/bs";
 
 const ProfileItem = ({
   profile: {
@@ -26,8 +27,8 @@ const ProfileItem = ({
       </div>
       <ul>
         {skills.slice(0, 4).map((skill, index) => (
-          <li key={index} className="text-primary">
-            <i className="fas fa-check" /> {skill}
+          <li key={index} style={{ color: "#cd5700" }}>
+            <BsCodeSlash /> {skill}
           </li>
         ))}
       </ul>
