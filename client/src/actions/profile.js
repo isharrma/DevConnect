@@ -49,13 +49,16 @@ export const getProfiles = () => async (dispatch) => {
 //Get a user's profile by their id
 export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await axios.get(`http://localhost:5000/api/profile/${userId}`);
+    const res = await axios.get(
+      `http://localhost:5000/api/profile/user/${userId}`
+    );
 
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
     });
   } catch (err) {
+    console.log(err);
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.data },
@@ -94,7 +97,6 @@ export const createProfile =
           "Content-Type": "application/json",
         },
       };
-
       const res = await axios.post(
         "http://localhost:5000/api/profile",
         formData,
@@ -126,9 +128,8 @@ export const createProfile =
           draggable: true,
           progress: undefined,
         });
+        history.push("/dashboard");
       }
-
-      history.push("/dashboard");
     } catch (err) {
       console.log(err.response.data.error);
       const errors = err.response.data.error;
@@ -357,7 +358,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? The following action can not be undone")) {
     try {
-      const res = await axios.delete("http://localhost:5000/api/profile");
+      await axios.delete("http://localhost:5000/api/profile");
 
       dispatch({
         type: CLEAR_PROFILE,

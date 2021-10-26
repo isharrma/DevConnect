@@ -10,6 +10,7 @@ import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
+import Spinner from "../Layout/Spinner";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -19,23 +20,9 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
   return loading && profile === null ? (
-    <div
-      style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-      }}
-    >
-      <Loader
-        type="TailSpin"
-        color="#00BFFF"
-        height={100}
-        width={80}
-        timeout={1000}
-      />
-    </div>
+    <Spinner />
   ) : (
     <Container fluid>
       <Row sm={7}>

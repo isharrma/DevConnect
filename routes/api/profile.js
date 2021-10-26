@@ -41,24 +41,24 @@ router.post(
     ],
   ],
   async (req, res) => {
-    const error = validationResult(req);
+    const errors = validationResult(req);
 
-    if (!error.isEmpty())
+    if (!errors.isEmpty())
       return res.status(400).json({
-        error: error.array(),
+        error: errors.array(),
       });
 
     const {
-      company,
       website,
-      location,
-      bio,
-      status,
       skills,
-      githubusername,
-      linkedin,
-      instagram,
       youtube,
+      instagram,
+      linkedin,
+      company,
+      status,
+      bio,
+      githubusername,
+      location,
     } = req.body;
 
     // Setting up profile object
@@ -87,13 +87,14 @@ router.post(
       if (profileFields) {
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
-          { $set: profileFields },
+          profileFields,
           { new: true }
         );
+      } else {
+        profile = new Profile(profileFields);
       }
-
       // Creating new profile if it doesnt exists
-      profile = new Profile(profileFields);
+
       await profile.save(); // All mongoose function return promises.
       return res.json(profile);
     } catch (err) {
