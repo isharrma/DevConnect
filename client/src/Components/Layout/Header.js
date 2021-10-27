@@ -69,18 +69,25 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
             ) : (
               <NavItem>
                 <Link
-                  to="/profiles"
-                  className="text-white"
-                  style={{ textDecoration: "none", padding: "10px" }}
-                >
-                  Developers
-                </Link>
-                <Link
                   to="/dashboard"
                   className="text-white"
                   style={{ textDecoration: "none", padding: "10px" }}
                 >
                   Dashboard
+                </Link>
+                <Link
+                  to="/posts"
+                  className="text-white"
+                  style={{ textDecoration: "none", padding: "10px" }}
+                >
+                  Posts
+                </Link>
+                <Link
+                  to="/profiles"
+                  className="text-white"
+                  style={{ textDecoration: "none", padding: "10px" }}
+                >
+                  Developers
                 </Link>
                 <Link
                   to="/"

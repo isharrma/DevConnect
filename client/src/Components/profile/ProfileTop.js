@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Jumbotron, Button } from "reactstrap";
+import { BsLinkedin, BsInstagram, BsYoutube, BsWindow } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ProfileTop = ({
@@ -10,25 +10,40 @@ const ProfileTop = ({
     location,
     website,
     social,
-    user: { name, avatar },
+    user: { username, avatar },
   },
 }) => {
   return (
-    <Jumbotron fluid>
-      <h1 className="display-3">Hello, world!</h1>
+    <div className="profile-top p-2" style={{ backgroundColor: "#E6E6FA" }}>
+      <img className="round-img my-1" src={avatar} alt="" />
+      <h1 className="large">{username}</h1>
       <p className="lead">
-        This is a simple hero unit, a simple Jumbotron-style component for
-        calling extra attention to featured content or information.
+        {status} {company ? <span> at {company}</span> : null}
       </p>
-      <hr className="my-2" />
-      <p>
-        It uses utility classes for typography and spacing to space content out
-        within the larger container.
-      </p>
-      <p className="lead">
-        <Button color="primary">Learn More</Button>
-      </p>
-    </Jumbotron>
+      <p>{location ? <span>{location}</span> : null}</p>
+      <div className="icons my-1">
+        {website ? (
+          <a href={`${website}`} target="_blank" rel="noopener noreferrer">
+            <BsWindow />
+          </a>
+        ) : null}
+        {social && social.linkedin && (
+          <a href={social.linkedin} target="_blank" rel="noopener noreferrer">
+            <BsLinkedin />
+          </a>
+        )}
+        {social && social.instagram && (
+          <a href={social.instagram} target="_blank" rel="noopener noreferrer">
+            <BsInstagram />
+          </a>
+        )}
+        {social && social.youtube && (
+          <a href={social.youtube} target="_blank" rel="noopener noreferrer">
+            <BsYoutube />
+          </a>
+        )}
+      </div>
+    </div>
   );
 };
 

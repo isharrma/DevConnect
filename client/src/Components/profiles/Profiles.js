@@ -15,7 +15,13 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   }, [getProfiles]);
 
   return (
-    <div>
+    <div
+      style={{
+        position: "absolute",
+        left: "10%",
+        right: "10%",
+      }}
+    >
       {loading ? (
         <Spinner />
       ) : (
