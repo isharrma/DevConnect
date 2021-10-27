@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Loader from "react-loader-spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience.js";
@@ -20,7 +19,13 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   }, [getProfileById, match.params.id]);
 
   return (
-    <div>
+    <div
+      style={{
+        position: "absolute",
+        left: "10%",
+        right: "10%",
+      }}
+    >
       {profile === null ? (
         <Spinner />
       ) : (
@@ -41,7 +46,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Experience</h2>
+              <h2 style={{ color: "sandybrown" }}>Experience</h2>
               {profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
@@ -57,7 +62,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             </div>
 
             <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Education</h2>
+              <h2 style={{ color: "sandybrown" }}>Education</h2>
               {profile.education.length > 0 ? (
                 <Fragment>
                   {profile.education.map((education) => (
@@ -72,9 +77,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
 
-            {profile.githubusername && (
+            {/* {profile.githubusername && (
               <ProfileGithub username={profile.githubusername} />
-            )}
+            )} */}
           </div>
         </div>
       )}

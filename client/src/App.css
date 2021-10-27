@@ -442,6 +442,7 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: auto;
 }
 
 .profile-exp {

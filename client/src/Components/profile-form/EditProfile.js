@@ -191,7 +191,7 @@ const EditProfile = ({
                   type="text"
                   name="linkedin"
                   id="linkedin"
-                  placeholder="Linkedin username"
+                  placeholder="Linkedin link"
                   value={linkedin}
                   onChange={(e) => onChange(e)}
                 />
@@ -206,7 +206,7 @@ const EditProfile = ({
                   type="text"
                   name="instagram"
                   id="instagram"
-                  placeholder="Instagram username"
+                  placeholder="Instagram link"
                   value={instagram}
                   onChange={(e) => onChange(e)}
                 />
@@ -221,7 +221,7 @@ const EditProfile = ({
                   type="text"
                   name="youtube"
                   id="youtube"
-                  placeholder="Youtube username"
+                  placeholder="Youtube link"
                   value={youtube}
                   onChange={(e) => onChange(e)}
                 />

@@ -76,9 +76,9 @@ router.post(
     }
 
     profileFields.social = {};
-    if (linkedin) profileFields.linkedin = linkedin;
-    if (instagram) profileFields.instagram = instagram;
-    if (youtube) profileFields.youtube = youtube;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
+    if (youtube) profileFields.social.youtube = youtube;
 
     try {
       let profile = Profile.findOne({ user: req.user.id });
@@ -309,7 +309,7 @@ router.get("/github/:username", (req, res) => {
         req.params.username
       }/repos?per_page=5&sort=created:asc&
       client_id=${config.get("githubClientId")}&client_secret=${config.get(
-        "githubClientSecret"
+        "githubClientSecret2"
       )}`,
       method: "GET",
       headers: { "user-agent": "node.js" },
@@ -318,8 +318,7 @@ router.get("/github/:username", (req, res) => {
     request(options, (error, response, body) => {
       if (error) console.log(error);
 
-      if (response.statusCode !== 200)
-        return res.status(404).json("User Not Found");
+      if (response.statusCode !== 200) return res.status(404).json([]);
 
       res.json(JSON.parse(body));
     });
