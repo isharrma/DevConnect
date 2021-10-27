@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addPost } from "../../actions/post";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const PostForm = ({ addPost }) => {
+import { addComment } from "../../actions/post";
+
+const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
 
   return (
@@ -16,16 +17,19 @@ const PostForm = ({ addPost }) => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          addPost({ text });
+          addComment(postId, { text });
           setText("");
         }}
       >
+        <FormGroup style={{ backgroundColor: "sandybrown", marginTop: "5%" }}>
+          <h2>Leave A Comment</h2>
+        </FormGroup>
         <FormGroup>
           <Input
             id="post"
             name="text"
             type="textarea"
-            placeholder="Say something.."
+            placeholder="Your comment"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
@@ -36,8 +40,8 @@ const PostForm = ({ addPost }) => {
   );
 };
 
-PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired,
+CommentForm.propTypes = {
+  addComment: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addPost })(PostForm);
+export default connect(null, { addComment })(CommentForm);
