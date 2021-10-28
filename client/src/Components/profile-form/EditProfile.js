@@ -141,9 +141,8 @@ const EditProfile = ({
           <Label for="skills">Skills*</Label>
           <Input
             type="text"
+            placeholder="Enter skills seperated with commas"
             name="skills"
-            id="skills"
-            placeholder="Skills with comma seperated(E.g, Java,JS,Express)"
             value={skills}
             onChange={(e) => onChange(e)}
           />

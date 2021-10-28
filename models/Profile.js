@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+require("mongoose-type-url");
 
 const ProfileSchema = new mongoose.Schema({
   user: {
@@ -16,7 +17,7 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
   },
   website: {
-    type: String,
+    type: mongoose.SchemaTypes.Url,
   },
   skills: {
     type: [String],
@@ -84,13 +85,13 @@ const ProfileSchema = new mongoose.Schema({
   ],
   social: {
     linkedin: {
-      type: String,
+      type: mongoose.SchemaTypes.Url,
     },
     instagram: {
-      type: String,
+      type: mongoose.SchemaTypes.Url,
     },
     youtube: {
-      type: String,
+      type: mongoose.SchemaTypes.Url,
     },
   },
   date: {

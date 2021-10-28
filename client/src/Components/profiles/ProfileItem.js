@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { BsCodeSlash } from "react-icons/bs";
+import { Button } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ProfileItem = ({
   profile: {
@@ -21,13 +23,13 @@ const ProfileItem = ({
           {status} {company && <span> at {company}</span>}
         </p>
         <p className="my-1">{location && <span>{location}</span>}</p>
-        <Link to={`/profile/${_id}`} className="btn btn-primary">
-          View Profile
+        <Link to={`/profile/${_id}`}>
+          <Button style={{ backgroundColor: "#7b68ee" }}>View Profile</Button>
         </Link>
       </div>
       <ul>
         {skills.slice(0, 4).map((skill, index) => (
-          <li key={index} style={{ color: "#cd5700" }}>
+          <li key={index} style={{ color: "#f77f00" }}>
             <BsCodeSlash /> {skill}
           </li>
         ))}

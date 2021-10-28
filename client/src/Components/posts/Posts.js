@@ -15,11 +15,13 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   }, [getPosts]);
   return (
     <div>
-      <Row>
-        <h1 className="large text-primary">Posts</h1>
-        <p className="lead">
-          <i className="fas fa-user" /> Welcome to the community
-        </p>
+      <Row style={{ marginTop: "2%" }}>
+        <Col md={{ offset: 1, size: 6 }} sm="12">
+          <h1 className="large" style={{ color: "#f77f00" }}>
+            Posts
+          </h1>
+          <p className="lead">Welcome to the community</p>
+        </Col>
       </Row>
       <Row>
         <PostForm />

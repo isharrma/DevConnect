@@ -14,7 +14,7 @@ const ProfileTop = ({
   },
 }) => {
   return (
-    <div className="profile-top p-2" style={{ backgroundColor: "#E6E6FA" }}>
+    <div className="profile-top p-2" style={{ backgroundColor: "#bcd4e6" }}>
       <img className="round-img my-1" src={avatar} alt="" />
       <h1 className="large">{username}</h1>
       <p className="lead">

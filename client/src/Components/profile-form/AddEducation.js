@@ -136,12 +136,12 @@ const AddEducation = ({ addEducation, history }) => {
           <FormText color="muted">Describe what you learned in brief.</FormText>
         </FormGroup>
         <Button
-          color="primary"
           style={{
             width: "10%",
             marginTop: "2%",
             marginLeft: "45%",
             marginBottom: "2%",
+            backgroundColor: "#7b68ee",
           }}
         >
           Submit

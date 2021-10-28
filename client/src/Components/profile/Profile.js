@@ -30,14 +30,24 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
         <Spinner />
       ) : (
         <div>
-          <Button>
-            <Link to="/profiles">Back</Link>
+          <Button style={{ backgroundColor: "#7b68ee", marginTop: "1%" }}>
+            <Link
+              to="/profiles"
+              className="text-white"
+              style={{ textDecoration: "none" }}
+            >
+              Back
+            </Link>
           </Button>
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Button>
-                <Link to="/edit-profile" className="btn btn-dark">
+              <Button style={{ backgroundColor: "#7b68ee", marginTop: "1%" }}>
+                <Link
+                  to="/profiles"
+                  className="text-white"
+                  style={{ textDecoration: "none" }}
+                >
                   Edit Profile
                 </Link>
               </Button>
@@ -46,7 +56,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
-              <h2 style={{ color: "sandybrown" }}>Experience</h2>
+              <h2 style={{ color: "#f77f00" }}>Experience</h2>
               {profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
@@ -62,7 +72,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             </div>
 
             <div className="profile-edu bg-white p-2">
-              <h2 style={{ color: "sandybrown" }}>Education</h2>
+              <h2 style={{ color: "#f77f00" }}>Education</h2>
               {profile.education.length > 0 ? (
                 <Fragment>
                   {profile.education.map((education) => (

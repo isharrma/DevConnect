@@ -167,8 +167,8 @@ img {
 
 .btn {
   display: inline-block;
-  background: var(--light-color);
-  color: #333;
+  background: #6a5acd;
+  color: #6a5acd;
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
@@ -199,8 +199,8 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
-  color: #fff;
+  background: #6a5acd;
+  color: #6a5acd;
 }
 
 .btn-light,
@@ -338,35 +338,8 @@ button {
 }
 
 /* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.7rem 2rem;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  top: 0;
-  border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
-}
-
-.navbar ul {
-  display: flex;
-}
-
-.navbar a {
-  color: #fff;
-  padding: 0.45rem;
-  margin: 0 0.25rem;
-}
-
-.navbar a:hover {
-  color: var(--primary-color);
-}
-
-.navbar .welcome span {
-  margin-right: 0.6rem;
+.header-text a:hover {
+  color: "sandybrown";
 }
 
 /* Landing Page */
