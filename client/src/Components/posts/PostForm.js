@@ -11,7 +11,12 @@ const PostForm = ({ addPost }) => {
   return (
     <div
       className="post-form"
-      style={{ width: "50%", marginLeft: "20%", marginBottom: "2%" }}
+      style={{
+        width: "50%",
+        marginLeft: "20%",
+        marginBottom: "2%",
+        marginTop: "2%",
+      }}
     >
       <Form
         onSubmit={(e) => {
@@ -29,8 +34,8 @@ const PostForm = ({ addPost }) => {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
+          <Button style={{ backgroundColor: "#7b68ee" }}>Post</Button>
         </FormGroup>
-        <Button color="primary">Post</Button>
       </Form>
     </div>
   );

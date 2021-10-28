@@ -26,12 +26,12 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
       ) : (
         <div>
           <Row>
-            <h2 style={{ color: "#cd5700" }}>Developers</h2>
+            <h2 style={{ color: "#f77f00", marginTop: "3%" }}>Developers</h2>
           </Row>
           <Row>
             <h4>Browse and connect with other developers</h4>
           </Row>
-          <div>
+          <div style={{ marginTop: "4%" }}>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
                 <ProfileItem key={profile.id} profile={profile} />

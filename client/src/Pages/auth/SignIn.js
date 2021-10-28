@@ -80,7 +80,11 @@ const SignIn = ({ login, isAuthenticated }) => {
                 </FormGroup>
               </CardBody>
               <CardFooter>
-                <Button type="submit" block color="primary">
+                <Button
+                  type="submit"
+                  block
+                  style={{ backgroundColor: "#7b68ee" }}
+                >
                   Sign In
                 </Button>
               </CardFooter>

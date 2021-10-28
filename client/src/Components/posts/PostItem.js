@@ -50,7 +50,11 @@ const PostItem = ({
               >
                 <AiFillDislike />{" "}
               </button>
-              <Link to={`/post/${_id}`} class="btn btn-primary">
+              <Link
+                to={`/post/${_id}`}
+                class="btn"
+                style={{ backgroundColor: "#7b68ee" }}
+              >
                 <AiOutlineComment />
                 <span class="comment-count">{comments.length}</span>
               </Link>
