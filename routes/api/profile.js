@@ -85,19 +85,11 @@ router.post(
     if (youtube) profileFields.social.youtube = youtube;
 
     try {
-      let profile = Profile.findOne({ user: req.user.id });
-
-      // Updating profile if it exists
-      if (profileFields) {
-        profile = await Profile.findOneAndUpdate(
-          { user: req.user.id },
-          profileFields,
-          { new: true }
-        );
-      } else {
-        profile = new Profile(profileFields);
-      }
-      // Creating new profile if it doesnt exists
+      let profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: profileFields },
+        { new: true, upsert: true, setDefaultsOnInsert: true }
+      );
 
       await profile.save(); // All mongoose function return promises.
       return res.json(profile);
@@ -312,17 +304,19 @@ router.get("/github/:username", (req, res) => {
       uri: `https://api.github.com/users/${
         req.params.username
       }/repos?per_page=5&sort=created:asc&
-      client_id=${config.get("githubClientId")}&client_secret=${config.get(
-        "githubClientSecret2"
-      )}`,
+     client_secret=${config.get("githubClientSecret")}`,
       method: "GET",
-      headers: { "user-agent": "node.js" },
+      headers: { "user-agent": "node.js", Accept: "application/json" },
     };
 
+    // client_id=${config.get("githubClientId")}&client_secret=${config.get(
+    //   "githubClientSecret"
     request(options, (error, response, body) => {
       if (error) console.log(error);
 
-      if (response.statusCode !== 200) return res.status(404).json([]);
+      if (response.statusCode !== 200) {
+        return res.status(404).json([]);
+      }
 
       res.json(JSON.parse(body));
     });

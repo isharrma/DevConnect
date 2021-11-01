@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Badge } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Spinner from "../Layout/Spinner";
 import { getGithubRepos } from "../../actions/profile";
 
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
-  const github = getGithubRepos(username);
   useEffect(() => {
     getGithubRepos(username);
-  }, [github]);
+  }, [getGithubRepos, username]);
 
   return (
     <div className="profile-github">
@@ -33,13 +34,21 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
             </div>
             <div>
               <ul>
-                <li className="badge badge-primary">
-                  Stars: {repo.stargazers_count}
+                <li>
+                  <Badge pill style={{ backgroundColor: "#7b68ee" }}>
+                    Stars: {repo.stargazers_count}
+                  </Badge>
                 </li>
-                <li className="badge badge-dark">
-                  Watchers: {repo.watchers_count}
+                <li>
+                  <Badge color="dark" pill>
+                    Watchers: {repo.watchers_count}
+                  </Badge>
                 </li>
-                <li className="badge badge-light">Forks: {repo.forks_count}</li>
+                <li>
+                  <Badge color="success" pill>
+                    Forks: {repo.forks_count}
+                  </Badge>
+                </li>
               </ul>
             </div>
           </div>

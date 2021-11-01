@@ -61,6 +61,7 @@ export const removeLike = (postId) => async (dispatch) => {
       type: UPDATE_LIKES,
       payload: { postId, likes: res.data },
     });
+    console.log(res.data);
   } catch (error) {
     console.log(error);
     dispatch({
