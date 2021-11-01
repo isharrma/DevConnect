@@ -2,5 +2,6 @@
     "mongoURI":"mongodb+srv://isharrma:Aman1999$.@cluster0.e0mrb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "jwt":"mysecrettoken",
     "githubClientId":"54bda19c40da356e7886",
-    "githubClientSecret":"a97318269d41b4604d6edf5a24901164bdda29fa"
+    "githubClientSecret":"a97318269d41b4604d6edf5a24901164bdda29fa",
+    "githubClientSecret2":"2dd80a2d3efcc89c9e7a58d4eb89c0b3c5548177"
 }

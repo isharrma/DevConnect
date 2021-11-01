@@ -125,7 +125,6 @@ export const createProfile =
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
-          draggable: true,
           progress: undefined,
         });
         history.push("/dashboard");

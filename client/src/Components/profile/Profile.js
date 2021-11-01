@@ -87,9 +87,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
 
-            {/* {profile.githubusername && (
+            {profile.githubusername && (
               <ProfileGithub username={profile.githubusername} />
-            )} */}
+            )}
           </div>
         </div>
       )}

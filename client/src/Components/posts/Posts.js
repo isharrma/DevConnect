@@ -9,10 +9,11 @@ import { getPosts } from "../../actions/post";
 import PostForm from "./PostForm";
 import PostItem from "./PostItem";
 
-const Posts = ({ getPosts, post: { posts, loading } }) => {
+const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
+
   return (
     <div>
       <Row style={{ marginTop: "2%" }}>
