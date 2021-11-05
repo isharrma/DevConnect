@@ -38,6 +38,8 @@ When the code is built and run the local server opens with the shown landpage. <
 
 ![individualprofile](https://user-images.githubusercontent.com/54413011/140533965-49aa1d99-08a8-4126-9352-597a0d9f2d11.jpg)
 
+![profilegithub](https://user-images.githubusercontent.com/54413011/140536862-ba3f4991-8598-4bf0-a9ab-59c394b582cf.jpg)
+
 ![postsPage](https://user-images.githubusercontent.com/54413011/140533985-327e569f-c871-40a1-98a4-afc07e159b86.jpg)
 
 
